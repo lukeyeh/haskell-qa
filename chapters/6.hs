@@ -78,7 +78,3 @@ mapList'' f = map (map f)
 
 mapList''' :: (a -> b) -> [[a]] -> [[b]]
 mapList''' = map . map 
-
-
-
-
