@@ -32,7 +32,7 @@ merge (x:xs) (y:ys) =
      else y : merge (x:xs) ys
 
 -- In mergeSort, we calculate the value of the expression length' l `div` 2
--- twice. Modify the mergeSort function to remove this ineffiency
+-- twice. Modify the mergeSort function to remove this inefficiency  
 mergeSortEff :: (Ord a) => [a] -> [a]
 mergeEff  :: (Ord a) => [a] -> [a] -> [a]
 
@@ -52,7 +52,7 @@ mergeEff  (x:xs) (y:ys) =
      then x : y : mergeEff  xs ys
      else y : mergeEff  (x:xs) ys
 
--- Write a version of insertion sort which sorts the arugment list into reverse
+-- Write a version of insertion sort which sorts the argument list into reverse
 -- order
 insertionSortRev :: (Ord a) => [a] -> [a]
 insertRev :: (Ord a) => a -> [a] -> [a]
@@ -68,7 +68,7 @@ insertRev  x (y:ys) =
      else y : insertRev  x ys
 
 -- Combine sort and insert functions into a single sortComplete function, first
--- using the where contsruct then using the let construct instead. 
+-- using the where construct then using the let construct instead. 
 insertionSortComplete :: (Ord a) => [a] -> [a]
 
 insertionSortComplete [] = []

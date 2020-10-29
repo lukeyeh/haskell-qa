@@ -4,7 +4,7 @@
 
 evenElements :: [a] -> [a]
 evenElements [] = []
-evenElements [x] = []
+evenElements [_] = []
 evenElements (_:x:xs) = x : evenElements xs
 
 -- Write a function countTrue which counts the number of True elements in a
