@@ -32,9 +32,9 @@ clipList l = map clip l
 -- cumulative effect of repeatedly applying the function. For instance, 
 -- apply f 6 4 should return f ( f ( f (f (f (f 4))))). What is the type of your
 -- function?
-compositeFuncN :: (Eq b, Num b) => (a -> a) -> b -> a -> a
-compositeFuncN f 1 x = f x
-compositeFuncN f n x = f (compositeFuncN f (n - 1) x)
+compositeFuncN :: (Eq a, Num a) => (a -> a) -> a -> a -> a
+compositeFuncN _ 0 = \_ -> 1
+compositeFuncN f n = f . compositeFuncN f (n - 1)
 
 -- Modify the insertion sort function from the preceding chapter to take a 
 -- comparison function, in the same way that we modified merge sort in this
@@ -77,4 +77,34 @@ mapList'' :: (a -> b) -> [[a]] -> [[b]]
 mapList'' f = map (map f)
 
 mapList''' :: (a -> b) -> [[a]] -> [[b]]
-mapList''' = map . map 
+mapList''' = map 
+           . map
+
+mutliply2 = multiply 
+          . multiply 10 
+    where
+        multiply :: Num a => a -> a -> a
+        multiply x y = x * y
+
+-- multiply2 1 69
+-- multiply (multiply 10 1) 69 
+
+mutliply3 = multiply 
+          . multiply 10 
+          . multiply 10
+    where
+        multiply :: Num a => a -> a -> a
+        multiply x y = x * y
+
+-- multiply3 1 69
+-- multiply (multiply 10 (multiply 10 1)) 69
+
+mutliply4 = multiply 
+          . multiply 10 10
+          . multiply 10 10
+    where
+        multiply :: Num a => a -> a -> a -> a
+        multiply x y z = x * y * z
+
+-- multiply4 1 69 420
+-- multiply (multiply 10 10 (multiply 10 10 1)) 69 420
